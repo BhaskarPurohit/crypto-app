@@ -4,6 +4,7 @@ import {server} from "../index"
 import { useEffect, useState } from 'react'
 import Loader from './Loader'
 import Error from './Error'
+import CoinCard from './CoinCard'
 
 
 const Coins = () => {
@@ -40,7 +41,7 @@ const Coins = () => {
         <HStack wrap={'wrap'}>
           {
             coins.map((i)=>(
-              <ExchangeCard name = {i.name}
+              <CoinCard name = {i.name}
               key={i.id}
               img = {i.image}
               rank=  {i.trust_score_rank}
