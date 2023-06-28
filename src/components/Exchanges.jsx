@@ -3,7 +3,7 @@ import {Container, HStack,VStack,Image,Heading,Text} from "@chakra-ui/react"
 import {server} from "../index"
 import { useEffect, useState } from 'react'
 import Loader from './Loader'
-import Error from './Error'
+import ErrorComponent from './ErrorComponent'
 import CoinCard from './CoinCard'
 
 
@@ -32,7 +32,7 @@ const Exchanges = () => {
   fetchExchanges()
   },[])
 
-  if(error) return <Error/>
+  if(error) return <ErrorComponent/>
   return (
     <Container maxw={'container.xl'}>
       {loading ? <Loader/> : <>

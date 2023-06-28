@@ -3,8 +3,8 @@ import {Link, HStack, Heading, VStack, Image, Text} from "@chakra-ui/react"
 
 
     const CoinCard = ({id, name, symbol, price, img, currencySymbol= "₹"})=>(
-        <Link to={`/coin/${id}`} target={'blank'}>
-            <VStack w={'52'} shadow={'lg'} borderRadius={'lg'} transition={'all 0.5s'} margin={'4'} css={{
+        <Link to={`/coin/${id}`} >
+            <VStack w={'52'} shadow={'lg'} borderRadius={'lg'} p={'8'} transition={'all 0.5s'} m={'4'} css={{
           "&:hover":{
             transform: "scale(1.1)"
              }
