@@ -1,4 +1,4 @@
-import { Container, Box, RadioGroup, HStack , Radio, VStack,Text, Image} from '@chakra-ui/react'
+import { Container, Box, RadioGroup, HStack , Radio, VStack,Text, Image, Stat, StatLabel, StatNumber} from '@chakra-ui/react'
 import axios from 'axios'
 import { server } from '..'
 import Loader from './Loader'
@@ -15,7 +15,7 @@ const CoinDetails = () => {
   const [error, setError] = useState(false)
   const [page, setPage] = useState(1)
   const [currency, setCurrency] = useState("inr")
-
+  const currencySymbol = currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
   const params = useParams()
 
   
@@ -58,10 +58,16 @@ const CoinDetails = () => {
           </RadioGroup>
           <VStack spacing={'4'} p={'16'} alignItems={"flex-start"}>
             <Text fontSize={'small'} alignSelf="center" opacity={0.7}>
-              Last Updated on {Date().split("G")[0]}
+              Last Updated on {Date(coins.market_data.last_updated).split("G")[0]}
 
             </Text>
             <Image src={coins.image.large} w={'16'} h={'16'} objectFit={'contain'}/>
+            <Stat>
+              <StatLabel>
+                {coins.name}
+              </StatLabel>
+              <StatNumber>{currencySymbol}{coins.market_data.current_price[currency]}</StatNumber>
+            </Stat>
           </VStack>
           </>
         )
