@@ -9,7 +9,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const Chart = ({arr=[], currency, days}) => {
     
     const prices = [1,2,34]
-    const date = ['14/8/46','12/55/12','32/2/33']
+    const date = []
 
     for(let i=0; i< arr.length; i++){
         date.push(arr[i][1])
