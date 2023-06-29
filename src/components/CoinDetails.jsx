@@ -1,4 +1,4 @@
-import { Container, Box, RadioGroup, HStack , Radio} from '@chakra-ui/react'
+import { Container, Box, RadioGroup, HStack , Radio, VStack,Text, Image} from '@chakra-ui/react'
 import axios from 'axios'
 import { server } from '..'
 import Loader from './Loader'
@@ -45,7 +45,7 @@ const CoinDetails = () => {
       {
         loading ? <Loader/> : (
           <>
-          <Box width={"full"} borderWidth={1}>Hello nigga</Box>
+          <Box width={"full"} borderWidth={1}></Box>
 
           {}
 
@@ -56,6 +56,13 @@ const CoinDetails = () => {
               <Radio value= {"eur"}>EUR</Radio>
             </HStack>
           </RadioGroup>
+          <VStack spacing={'4'} p={'16'} alignItems={"flex-start"}>
+            <Text fontSize={'small'} alignSelf="center" opacity={0.7}>
+              Last Updated on {Date().split("G")[0]}
+
+            </Text>
+            <Image src={coins.image.large} w={'16'} h={'16'} objectFit={'contain'}/>
+          </VStack>
           </>
         )
       }
