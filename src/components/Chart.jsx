@@ -10,6 +10,12 @@ const Chart = ({arr=[], currency, days}) => {
     
     const prices = [1,2,34]
     const date = ['14/8/46','12/55/12','32/2/33']
+
+    for(let i=0; i< arr.length; i++){
+        date.push(arr[i][1])
+        prices.push(arr[i][1])
+    }
+    console.log(date)
     const data = {
 
     }
