@@ -1,4 +1,4 @@
-import { Container, Box, RadioGroup, HStack , Radio, VStack,Text, Image, Stat, StatLabel, StatNumber} from '@chakra-ui/react'
+import { Container, Box, RadioGroup, HStack , Radio, VStack,Text, Image, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, Badge, Progress} from '@chakra-ui/react'
 import axios from 'axios'
 import { server } from '..'
 import Loader from './Loader'
@@ -67,7 +67,15 @@ const CoinDetails = () => {
                 {coins.name}
               </StatLabel>
               <StatNumber>{currencySymbol}{coins.market_data.current_price[currency]}</StatNumber>
+              <StatHelpText>
+                <StatArrow type={coins.market_data.price_change_percentage_24h >0 ? "increase" :"decrease"} />
+                {coins.market_data.price_change_percentage_24h}%
+              </StatHelpText>
             </Stat>
+            <Badge fontSize={"2xl"} bgColor={"blackAlpha.900"} color={"white"}>
+              {`#${coins.market_cap_rank}`}
+            </Badge>
+            <CustomBar high={232} low={40}/>
           </VStack>
           </>
         )
@@ -77,3 +85,12 @@ const CoinDetails = () => {
 }
 
 export default CoinDetails
+
+const CustomBar = ({high, low})=>{
+  <VStack w={"full"}>
+    <Progress value={"50"} colorScheme={"teal"}/>
+    <HStack justifyContent={"space-between"} w={"full"}></HStack>
+  </VStack>
+}
+
+
