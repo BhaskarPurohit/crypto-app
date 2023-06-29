@@ -12,11 +12,19 @@ const Chart = ({arr=[], currency, days}) => {
     const date = []
 
     for(let i=0; i< arr.length; i++){
-        date.push(arr[i][1])
+        if(days === "24h"){date.push(new Date(arr[i][1]).toLocaleTimeString()) }  
+        date.push(new Date(arr[i][1]).toLocaleDateString())
         prices.push(arr[i][1])
     }
     console.log(date)
     const data = {
+        label:date,
+        datasets:[{
+            label: `Price in ${currency}`,
+            data: prices, 
+            borderColor:"rgba(255,99,132)",
+            backgroundColor:"rgba(255,99,132,0.5)"
+        }]
 
     }
 
@@ -24,14 +32,7 @@ const Chart = ({arr=[], currency, days}) => {
 
 
   return (
-    <Line options={{responsive:true,}} data={{
-        labels: date,
-        datasets:[{
-            label:`Price in ${currency}`,
-            data: prices, borderColor:"rgb(255,99,132)",
-            backgroundColor: "rgba(255,99,132,0.5)"
-        }]
-    }
+    <Line options={{responsive:true,}} data={data
     }/>
   )
 }
