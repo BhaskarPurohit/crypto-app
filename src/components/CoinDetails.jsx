@@ -4,6 +4,8 @@ import { server } from '..'
 import Loader from './Loader'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 
 
 const CoinDetails = () => {
@@ -13,12 +15,14 @@ const CoinDetails = () => {
   const [page, setPage] = useState(1)
   const [currency, setCurrency] = useState("inr")
 
+  const params = useParams()
+
   
   useEffect(()=>{
-    const fetchCoins = async ()=>{
+    const fetchCoin = async ()=>{
       try{
         const {data} = await axios.get(
-          `${server}/coins/markets?vs_currency=${currency}&page=${page}`
+          `${server}/coins/${params.id}`
         )
         setCoins(data)
         setLoading(false)
@@ -27,8 +31,8 @@ const CoinDetails = () => {
         setLoading(false)
       }
     }
-    fetchCoins()
-  },[currency, page])
+    fetchCoin()
+  },[params.id])
   
 
 
